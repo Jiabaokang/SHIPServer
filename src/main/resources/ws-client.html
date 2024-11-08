@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ws client</title>
+</head>
+<body>
+<p style="border: 1px solid black;width: 600px;height: 400px;" id="talkMsg"></p>
+<input id="message" />
+<button id="sendBtn" onclick="sendMsg()">发送</button>
+</body>
+
+<script>
+    //let ws = new WebSocket("ws://localhost:8080/myWs");
+    let ws = new WebSocket("ws://localhost:8080/myWs1");
+
+    // 连接建立时触发
+    ws.onopen = function (evt) {
+        // console.log("Connection open...");
+        ws.send("Hello WebSockets!");
+    };
+
+    // 接收到消息时触发
+    ws.onmessage = function (message) {
+       document.getElementById("talkMsg").innerHTML = message.data;
+    };
+
+    function sendMsg() {
+        let docMsg = document.getElementById("message")
+        ws.send(docMsg.value);
+        docMsg.value = "";
+
+    }
+</script>
+
+
+</html>
+
