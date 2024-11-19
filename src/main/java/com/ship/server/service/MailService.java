@@ -1,4 +1,4 @@
-package com.ship.server.mail_service;
+package com.ship.server.service;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,4 +37,6 @@ public class MailService {
         log.info("邮件内容-->{}",message);
 
     }
+
+
 }

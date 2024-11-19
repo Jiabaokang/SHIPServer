@@ -1,0 +1,35 @@
+
+server:
+  port: 8081
+  servlet:
+    encoding:
+      charset: UTF-8
+    context-path: /salto
+
+spring:
+  application:
+    name: SHIPServer
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shiro?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123456
+
+
+  mail:
+    host: smtp.126.com
+    username: jiabaokangsy@126.com
+    password: syjbk126
+    default-encoding: UTF-8
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+salto_server_url: http://192.168.0.200:8100
+
+
+
+
+
+

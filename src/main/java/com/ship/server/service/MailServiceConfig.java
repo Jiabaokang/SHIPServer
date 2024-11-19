@@ -1,13 +1,15 @@
-package com.ship.server.mail_service;
+package com.ship.server.service;
 
 //import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 //import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.ship.server.entity.salto.SaltoDBUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 //import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class MailServiceConfig {
@@ -15,6 +17,11 @@ public class MailServiceConfig {
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public List<SaltoDBUser> saltoDBUserList() {
+        return new ArrayList<SaltoDBUser>();
     }
 
 //    @Bean

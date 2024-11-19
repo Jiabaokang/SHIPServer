@@ -1,4 +1,4 @@
-package com.ship.server.ws_java;
+package com.ship.server.test.ws_java;
 
 
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,8 @@
-package com.ship.server.ws_java;
+package com.ship.server.test.ws_java;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * WebSocket 配置类，用于注册 WebSocket 端点并将其暴露给 Spring 容器

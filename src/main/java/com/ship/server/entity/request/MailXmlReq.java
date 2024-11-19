@@ -1,4 +1,4 @@
-package com.ship.server.bean;
+package com.ship.server.entity.request;
 
 //import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MailRequestXml {
+public class MailXmlReq {
 
     @JsonProperty("to")
     private String to;

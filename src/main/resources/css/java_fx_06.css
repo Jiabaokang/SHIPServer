@@ -1,0 +1,24 @@
+
+
+.button{
+    -fx-background-color: #ab25b5;
+    -fx-text-fill: white;
+    -fx-padding: 8px;
+}
+.button:hover{
+    -fx-background-color: #8c90d1;
+    -fx-text-fill: black;
+}
+
+.text-area{
+    -fx-padding: 4px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #ab25b5;
+}
+
+.v-box-extend{
+    -fx-min-height: 80px;
+
+}
+

@@ -1,5 +1,6 @@
 package com.ship.server.utils;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.io.IOException;
@@ -29,8 +30,12 @@ public class JacksonXmlConverter {
         return xmlMapper.writeValueAsString(bean);
     }
 
+    /**
+     * XML字符串转Java对象
+     */
     public static <T> T xmlToBean(String xmlStr, Class<T> clazz) throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return xmlMapper.readValue(xmlStr, clazz);
     }
 }

@@ -1,4 +1,4 @@
-package com.ship.server.ws_spring;
+package com.ship.server.test.ws_spring;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

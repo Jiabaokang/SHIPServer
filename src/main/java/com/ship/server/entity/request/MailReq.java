@@ -1,4 +1,4 @@
-package com.ship.server.bean;
+package com.ship.server.entity.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MailRequest {
+public class MailReq {
 
     private String to;
     private String subject;

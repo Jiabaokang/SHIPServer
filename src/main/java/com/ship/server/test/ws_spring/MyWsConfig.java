@@ -1,4 +1,4 @@
-package com.ship.server.ws_spring;
+package com.ship.server.test.ws_spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;

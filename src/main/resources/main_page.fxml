@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+
+<?import javafx.scene.control.TextArea?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ship.server.test.fxclient.controller.LoginController"
+      minWidth="800"
+      minHeight="600"
+      spacing="12"
+      style="-fx-padding: 16px;"
+      stylesheets="@/css/java_fx_06.css">
+
+        <VBox styleClass="v-box-extend" alignment="CENTER">
+            <TextArea fx:id="inputContent" promptText="请输入内容"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="8">
+
+            <HBox alignment="BASELINE_LEFT" spacing="8"  minWidth="60">
+                <Label text="URL地址："/>
+                <TextField fx:id="urlField"  HBox.hgrow="ALWAYS" text="http://192.168.0.200" />
+            </HBox>
+
+            <HBox alignment="BASELINE_LEFT" spacing="8" minWidth="60">
+                <Label text="服务端口："/>
+                <TextField fx:id="portField" HBox.hgrow="ALWAYS" text="8100" />
+            </HBox>
+
+            <HBox alignment="BASELINE_CENTER" spacing="24" >
+                <Button styleClass="button" onAction="#sendSocketRequest" text="建立Socket连接" HBox.hgrow="ALWAYS"/>
+                <Button styleClass="button" onAction="#sendHttpRequest" text="发送HttpGet请求"  HBox.hgrow="ALWAYS"/>
+                <Button styleClass="button" onAction="#sendXmlRequest" text="发送HttpPostXml请求"  HBox.hgrow="ALWAYS"/>
+
+            </HBox>
+
+
+        </VBox>
+
+    <VBox styleClass="v-box-extend" alignment="CENTER">
+        <TextArea fx:id="resultContent" promptText="会显示结果"/>
+    </VBox>
+
+
+
+</VBox>
