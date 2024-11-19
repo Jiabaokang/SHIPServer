@@ -1,3 +1,4 @@
+salto_server_url: http://192.168.0.200:8100
 
 server:
   port: 8081
@@ -11,7 +12,8 @@ spring:
     name: SHIPServer
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/shiro?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql:///Salto
+    #url: jdbc:mysql://localhost:3306
     username: root
     password: 123456
 
@@ -25,8 +27,18 @@ spring:
 logging:
   level:
     org.springframework.web: DEBUG
+    com.ship.server.dao: trace
+    com.org.springframework.jdbc: trace
 
-salto_server_url: http://192.168.0.200:8100
+
+
+mybatis-plus:
+  type-aliases-package: com.ship.server.entity
+  mapper-locations: classpath:mapper/*.xml
+  #是否开启字段驼峰命名规则映射
+  configuration:
+    map-underscore-to-camel-case: off
+
 
 
 

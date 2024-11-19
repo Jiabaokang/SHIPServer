@@ -1,5 +1,6 @@
 package com.ship.server.entity.salto;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@TableName("SaltoUser")
 public class SaltoDBUser{
 
     @JacksonXmlProperty(localName = "ExtUserID")
