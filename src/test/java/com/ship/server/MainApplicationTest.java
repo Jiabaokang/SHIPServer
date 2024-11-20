@@ -14,7 +14,6 @@ import java.util.List;
 public class MainApplicationTest {
 
     @Autowired
-    //@Resource
     private IPmsUserDao pmsUserDao;
 
     @Test
@@ -29,5 +28,11 @@ public class MainApplicationTest {
         for (PmsUser pmsUser : pmsUsers) {
             System.out.println(pmsUser);
         }
+
+        long count = pmsUserDao.selectCount(null);
+        System.out.println("总条数:"+count);
     }
+
+
+
 }

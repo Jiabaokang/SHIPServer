@@ -19,10 +19,10 @@ public class MailServiceConfig {
         return new RestTemplate();
     }
 
-    @Bean
-    public List<SaltoDBUser> saltoDBUserList() {
-        return new ArrayList<SaltoDBUser>();
-    }
+//    @Bean
+//    public List<SaltoDBUser> saltoDBUserList() {
+//        return new ArrayList<SaltoDBUser>();
+//    }
 
 //    @Bean
 //    public XmlMapper getXmlMapper() {

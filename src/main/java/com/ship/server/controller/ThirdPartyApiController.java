@@ -55,7 +55,7 @@ public class ThirdPartyApiController {
     }
 
     @PostMapping(
-            value = "/api/getUserByPhone",
+            value = "/getUserByPhone",
             consumes = MediaType.APPLICATION_XML_VALUE,
             produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?>getUserByPhone(@RequestBody String xmlBody){

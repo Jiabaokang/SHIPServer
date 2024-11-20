@@ -1,6 +1,9 @@
 package com.ship.server.service;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.ship.server.dao.ISaltoUserDao;
+import com.ship.server.dao.ISaltoUserV2Dao;
 import com.ship.server.entity.salto.RequestResponse;
 import com.ship.server.entity.salto.SaltoDBUser;
 import com.ship.server.utils.JacksonXmlConverter;
@@ -25,8 +28,12 @@ public class ThirdPartyApiService {
     @Autowired
     public RestTemplate restTemplate;
 
+
     @Autowired
-    public List<SaltoDBUser> saltoDBUserList;
+    public ISaltoUserDao saltoUserDao;
+
+    @Autowired
+    ISaltoUserV2Dao saltoUserV2Dao;
 
     @Value("${salto_server_url}")
     private String saltoUrl;
@@ -84,7 +91,7 @@ public class ThirdPartyApiService {
 
 
     /**
-     * 60秒执行一次
+     * 定时任务60秒执行一次
      *
      * @throws IOException
      * @throws InterruptedException
@@ -115,24 +122,20 @@ public class ThirdPartyApiService {
         // 解析响应数据
         RequestResponse data = JacksonXmlConverter.xmlToBean(response, RequestResponse.class);
         List<SaltoDBUser> newUserList= data.getParams().getSaltoDBUserList().getSaltoDBUser();
-        //第一次可能是空的
-        if (saltoDBUserList.isEmpty()){
-            saltoDBUserList.addAll(newUserList);
-        }else{
-            int oldSize = saltoDBUserList.size();
-            int newSize = newUserList.size();
-            if (oldSize != newSize){
-                // 清空旧列表
-                saltoDBUserList.clear();
-                // 添加新列表
-                saltoDBUserList.addAll(newUserList);
-            }
+
+        // 数据总条数
+        long userCount = saltoUserV2Dao.selectCount(null);
+        log.info("数据库用户总条数:{},接口请求到的总条数:{},是否有变:{}", userCount,newUserList.size(),(userCount != newUserList.size()));
+        //说明数据有变化了
+        if (userCount != newUserList.size()){
+            // 取旧数据
+            //List<SaltoDBUser> oldUserList = saltoUserV2Dao.selectList(null);
+            // 遍历新数据
+            saltoUserV2Dao.delete(null);
+            //新数据插入数据库
+            int res = saltoUserV2Dao.insertBatchSomeColumn(newUserList);
+            log.info("插入数据库成功:{}",res);
         }
-
-        int userCount = saltoDBUserList.size();
-
-        log.info("获取用户列表:{}", userCount);
-        log.info("获取用户列表:{}", saltoDBUserList);
     }
 
 
@@ -142,18 +145,10 @@ public class ThirdPartyApiService {
      * @return
      */
     public SaltoDBUser getUserByPhoneNumber(String phoneNumber) {
-
-        log.info("获取电话号:"+phoneNumber);
-        log.info("用户列表:{}",saltoDBUserList);
-        SaltoDBUser saltoDBUser = null;
-
-        for (SaltoDBUser dbUser : saltoDBUserList) {
-            String phone = dbUser.getPhoneNumber();
-            if (phoneNumber.equals(phone)) {
-                saltoDBUser = dbUser;
-                break;
-            }
-        }
+        QueryWrapper<SaltoDBUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("phoneNumber", phoneNumber);
+        SaltoDBUser saltoDBUser = saltoUserV2Dao.selectOne(queryWrapper);
+        log.info("用户信息:{}",saltoDBUser);
         return saltoDBUser;
     };
 

@@ -17,11 +17,13 @@ public class PMSController {
     @Autowired
     private PMSService pmsService;
 
+
+
     @PostMapping("/pmsSendUserInfo")
     public ResponseEntity<?> pmsSendUserInfo(@RequestBody ComContent body){
         log.info("body:{}",body);
        String result =  pmsService.saveContentForUser(body);
-
        return ResponseEntity.ok(result);
     }
+
 }
