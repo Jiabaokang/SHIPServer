@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/FxJava/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/FxJava/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/FxJava/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/FxJava/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PmsSocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ship/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

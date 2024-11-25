@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ljrh.shipserver.dao.IPmsUserDao">
+<!--    <select id="selectOne" resultType="User">-->
+<!--        SELECT usr_id,usr_account,usr_password,usr_money FROM t_user-->
+<!--        WHERE usr_account = #{usr_account}-->
+<!--    </select>-->
+</mapper>
+
+
+
+
