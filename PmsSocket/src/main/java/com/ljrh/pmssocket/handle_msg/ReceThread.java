@@ -1,5 +1,6 @@
 package com.ljrh.pmssocket.handle_msg;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
 import com.ljrh.pmssocket.dao.IPmsUserDao;
 import com.ljrh.pmssocket.entity.ThirdPmsUser;
@@ -57,10 +58,21 @@ public class ReceThread extends Thread{
      * @param pmsUser
      */
     private void saveDataToDB(ThirdPmsUser pmsUser) {
-        int insert = pmsUserDao.insert(pmsUser);
-        String result = insert == 1?"数据插入成功":"数据插入失败";
+        String phoneNumber = pmsUser.getPhoneNumber();
+        QueryWrapper<ThirdPmsUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("phone_number",phoneNumber);
+        ThirdPmsUser one = pmsUserDao.selectOne(queryWrapper);
+        String executeResult ;
+        if (one == null){
+            int insert = pmsUserDao.insert(pmsUser);
+            executeResult = insert == 1?"数据插入成功":"数据插入失败";
+        }else{
+            int update = pmsUserDao.update(pmsUser, queryWrapper);
+            executeResult = update == 1?"数据更新成功":"数据更新失败";
+        }
         try {
-            SendThread.sendData(result,clickSocket);
+            //发送结果给客户端
+            SendThread.sendData(executeResult,clickSocket);
         } catch (IOException e) {
             log.info("回复数据异常{}",e.getMessage());
             e.printStackTrace();
